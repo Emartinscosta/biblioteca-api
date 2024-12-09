@@ -1,5 +1,6 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 import livrosRoutes from "./routes/livrosRoute.js";
 import authenticate from "./database/connection.js";
 import verificarAdm from "./middleware/adminMiddleware.js";
@@ -7,6 +8,8 @@ import verificarAdm from "./middleware/adminMiddleware.js";
 authenticate();
 
 const servidor = express();
+
+servidor.use(cors({ origin: "*"}));
 
 servidor.use(express.json());
 
